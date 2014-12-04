@@ -20,7 +20,7 @@ def findFactors(target):
 
 class SieveOfEratosthenes(object):
     CACHE = [2, 3, 5, 7]
-    def __init__(self, max_value):
+    def __init__(self, max_value=None):
         self.i = -1
         self.primes = self.CACHE
         self.compositegenerators = [CompositeGenerator(p) for p in self.primes]
@@ -37,7 +37,7 @@ class SieveOfEratosthenes(object):
         while True:
             found = True
             candidate = self.wheel.next()
-            if candidate > self.max_value:
+            if self.max_value and candidate > self.max_value:
                 raise StopIteration
             if candidate < self.primes[-1]:
                 continue
